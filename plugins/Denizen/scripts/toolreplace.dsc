@@ -12,7 +12,6 @@ toolreplace_cmd:
     description: Toggles the broken tool replacement feature.
     usage: /toolreplace
     script:
-
         - if <player.has_flag[toolreplace_disabled]>:
             - flag <player> toolreplace_disabled:!
             - narrate "<&7>You have <&a>enabled<&7> the tool replacement feature."
@@ -28,12 +27,8 @@ toolreplace_events:
             - if !<player.has_flag[toolreplace_disabled]>:
                 - define i <context.item>
                 - define inv <player.inventory>
-                - if <[i].script.exists>:
-                    - define slots <[inv].find_all_items[<[i].script.name>]>
-                - else:
-                    - define slots <[inv].find_all_items[<[i].material.name>]>
-                    - foreach <[slots]> as:curr_slot:
-                        - define slots:<-:<[curr_slot]> if:<player.inventory.slot[<[curr_slot]>].script.exists>
+                - define slots <[inv].find_all_items[<[i].material.name>].filter_tag[<[inv].slot[<[filter_value]>].script.exists.not>]>
+                - define slots <[inv].find_all_items[<[i].script.name>].filter_tag[<[inv].slot[<[filter_value]>].script.name.equals[<[i].script.name>]>]> if:<[i].script.exists>
                 - if <[slots].any>:
                     - define random_slot <[slots].random>
                     - inventory set o:<[inv].slot[<[random_slot]>]> d:<[inv]> slot:<player.held_item_slot>

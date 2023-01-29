@@ -1,0 +1,41 @@
+# Data files
+cache
+libraries
+logs
+versions
+*.dat
+
+# Plugin folder
+plugins/bStats
+*.jar
+
+# Citizens
+plugins/Citizens/saves.yml
+
+# Denizen
+plugins/Denizen/*
+!plugins/Denizen/scripts
+!plugins/Denizen/config.yml
+!plugins/Denizen/data
+plugins/Denizen/data/*.secret
+
+# LuckPerms
+plugins/LuckPerms/*
+!plugins/LuckPerms/config.yml
+!plugins/LuckPerms/yaml-storage
+plugins/LuckPerms/yaml-storage/*
+!plugins/LuckPerms/yaml-storage/groups
+
+# World folders
+world*
+
+# Various files
+.console_history
+*.json
+paper.jar
+
+# Leave eula out - make end user enable it
+eula.txt
+
+# Ignore server.properties until production-ready
+server.properties

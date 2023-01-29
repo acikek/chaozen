@@ -1,0 +1,4 @@
+server:
+    - Paper: 
+        version: 1.19.3
+        build: 386

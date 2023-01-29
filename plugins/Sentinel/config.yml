@@ -1,0 +1,120 @@
+# Sentinel plugin configuration file
+
+# Default settings for a new NPC
+# Generally these should be edited per-NPC via command, unless you really want this apply to every NPC ever
+sentinel defaults:
+    # Whether 'close quarters' NPCs should chase targets.
+    close chase target: true
+    # Whether 'ranged attack' NPCs should chase targets.
+    ranged chase target: false
+    # How much damage to do. -1 for calculated values.
+    damage: -1
+    # How much armor to have (percentage). -1 for calculated values.
+    armor: -1
+    # How much health to have.
+    health: 20
+    # Whether this NPC is invincible.
+    invincible: false
+    # Attack rate, in ticks.
+    attack rate: 30
+    # Heal rate, in ticks.
+    heal rate: 100
+    # Whether the NPC should be protected from damage by ignore targets.
+    protected: true
+    # Whether this NPC fights back.
+    fightback: true
+    # Whether this NPC needs ammo to fight with.
+    needs ammo: false
+    # Whether this NPC will avoid damaging non-targets.
+    safe shot: true
+    # Default respawn time, in ticks.
+    respawn time: 100
+    # Whether enemy mobs killed by this NPC should drop items.
+    enemy drops: false
+    # How long to target temporary enemies for, in ticks. 0 means never-forget. Default 6000 = 5 minutes.
+    enemy target time: 6000
+    # What movement (chase) speed should be used, as a multiple of the default speed.
+    speed: 1.5
+    # Whether to automatically switch to the most appropriate available weapon. (Bow at range, or sword up close).
+    autoswitch: false
+    # Accuracy offset, 0 means perfectly accurate, 5 means pretty inaccurate.
+    accuracy: 0
+    # "Realistic" logic, don't attack targets we can't see, if enabled.
+    realistic: false
+    # How far the NPC can reach.
+    reach: 4.5
+    # How far the NPC is willing to fire projectiles.
+    projectile range: 100
+    # How far the NPC should stay away from threats (listed by 'addavoid' command).
+    avoid range: 10
+    # Whether the NPC should run away when attacked.
+    runaway: false
+    # How far away the NPC will greet or warn players from.
+    greet range: 10
+    # How fast the NPC will greet or warn players, in ticks.
+    greet rate: 100
+    # How long (in ticks) it takes an NPC to react to sighting a new target. 0 = no delay.
+    reaction slowdown: 0
+    # Whether the NPC can be knocked back when hit. If set false, will try to force the NPC to remain in place after receiving damage.
+    allow knockback: true
+    # How much XP to drop when the NPC dies.
+    death xp: 0
+
+random:
+    # How long (in ticks) NPCs should run away for (when hit or told to avoid threats).
+    run away time: 1200
+    # What sound to play when the "spectral" attack is used.
+    spectral sound: ENTITY_VILLAGER_YES
+    # Whether to use 'workaround' mode of melee damage.
+    # If enabled, this can cause unwanted side effects, like mobs not aggroing or some armor effects not applying.
+    workaround damage: false
+    # If set 'true', native (Spigot or NMS) driven attack handlers will be used for melee attacks from some NPC entity types when that NPC's damage value is -1.
+    # If the damage value is manually specified, or the NPC is not a supported type, or this config key is set to 'false', a direct damage induction will be used instead.
+    # If 'workaround damage' is enabled, neither native nor direct damage will be used, and the workaround hack will apply instead.
+    do native attacks: true
+    # Whether to enforce drops even when 'keepInventory' or similar are enabled.
+    workaround drops: false
+    # Whether to block some Bukkit events related to Sentinel NPCs from ever running. Will cause weirdness with basic functionality.
+    # Recommended to use this alongside other workaround options.
+    workaround bukkit events: false
+    # Whether to use Sentinel's entity chase pathfinder.
+    # If set to 'false', will use the Citizens built-in one instead.
+    workaround entity chase pathfinder: true
+    # Whether to permit death messages to show for Sentinel NPC deaths.
+    death messages: false
+    # How fast to try to shoot things (EG arrows).
+    shoot speed minimum: 20
+    # Whether to force damage through (particularly for ranged attacks).
+    # If enabled, this can cause unwanted side effects, like mobs not aggroing or some armor effects not applying.
+    enforce damage: false
+    # Whether skull attack, evoker fang, or shulker bullets are allowed.
+    skull allowed: true
+    # How many calculation cycles before an NPC will give up on a good target.
+    clever ticks: 10
+    # Whether to ignore targets that are invisible.
+    ignore invisible targets: true
+    # Whether to prevent players from damaging NPCs that are guarding them.
+    no guard damage: true
+    # If false: checks from NPC eye to target eye. If true: checks from NPC eye to multiple points on target body.
+    # 'true' is smarter at checking, at the cost of performance.
+    enhance los traces: true
+    # Distances used for NPCs following their guarded player
+    guard follow distance:
+        # Maximum possible distance of point to choose (relative to the guarded player)
+        selection range: 4
+        # Minimum distance before choosing a new point (relative to guarded player)
+        minimum: 7
+    # How long (in ticks) before Sentinel-fired arrows in the ground are cleaned up. Set to 0 to disable cleanup.
+    arrow cleanup time: 200
+    # Whether to protect Sentinel NPCs from being burned by the sun.
+    block sunburn: true
+    # Whether to retain the existing target even when a better one exists.
+    # This will persist per individual NPC, but is not user configurable per-NPC at the moment (API configurable only).
+    retain target: false
+    # Whether to prevent block damage caused by Sentinel weapons.
+    prevent explosion block damage: true
+    # (Experimental) If enabled, will automatically change the NPC's pathfinding mode if the NPC appears to be getting stuck.
+    auto correct pathfinder mode: true
+
+# How fast to recalculate, in ticks.
+update rate: 10

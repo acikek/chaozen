@@ -333,9 +333,9 @@ Packets:
 # Tags work here and will be pre-parsed at load time. RGB color codes work here.
 Colors:
     # The base text color. 'narrate' command usages should usually start with <&[base]>
-    base: <&2>
+    base: <white>
     # Special/stand-out/focused/emphasized text within a message. 'narrate' commands that need to emphasize a value should use this on those values.
-    emphasis: <&b>
+    emphasis: <&e>
     # Error messages. 'narrate' commands displaying an error message should use this.
     error: <red>
     # Warning messages. 'narrate' commands displaying a warning message should use this.
@@ -346,5 +346,7 @@ Colors:
     lore: <&7>
     # Your preferred color for NPC names. Scripts that use the "create" command should usually use this.
     npc: <&a>
+    # Short for user error. Primarily for invalid input to commands.
+    ue: <&4>
     # Default: the backup for when a color label is unrecognized. Generally don't touch this.
     default: <white>

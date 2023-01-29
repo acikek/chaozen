@@ -11,6 +11,7 @@
 get_hand_loc:
     type: procedure
     definitions: player
+    debug: false
     script:
         - define hand <[player].main_hand>
         - if <[player].main_hand> == RIGHT:

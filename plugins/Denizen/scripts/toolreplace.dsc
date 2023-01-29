@@ -6,6 +6,7 @@
 
 toolreplace_cmd:
     type: command
+    debug: false
     name: toolreplace
     aliases:
         - tr

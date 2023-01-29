@@ -10,3 +10,5 @@ discord_bridge:
         - discordmessage id:bot channel:1069156072197210112 "<&gt> *<player.name> joined*"
         after player quit:
         - discordmessage id:bot channel:1069156072197210112 "<&gt> *<player.name> left*"
+        after player dies:
+        - discordmessage id:bot channel:1069156072197210112 "<&gt> *<context.message.strip_color>*"

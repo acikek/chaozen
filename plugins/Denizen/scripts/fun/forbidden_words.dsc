@@ -7,7 +7,7 @@ get_forbidden_word:
         - determine null
     - if <[item].material.name> != diamond or !<[item].has_display>:
         - determine null
-    - define word <[item].display.strip_color.to_lowercase.before[ ]>
+    - define word <[item].display.strip_color.before[ ]>
     - if <server.flag[forbidden_words].contains[<[word]>].if_null[false]> == <[should_exist]>:
         - determine <[word]>
     - determine null
@@ -24,7 +24,7 @@ forbidden_words:
             - stop
         - flag server forbidden_words:->:<[word]>
         - customevent id:forbidden_word_created context:[word=<[word]>]
-        after player empties water_bucket:
+        on player empties water_bucket:
         - define diamonds <context.relative.find_entities[dropped_item].within[1.5]>
         - if <[diamonds].is_empty>:
             - stop
@@ -33,11 +33,12 @@ forbidden_words:
         - if <[word]> == null:
             - stop
         - flag server forbidden_words:<-:<[word]>
-        - modifyblock <context.relative> air
+        # can't have shit in detroit
+        - take water_bucket
         - customevent id:forbidden_word_removed context:[word=<[word]>;location=<[diamond].location>]
         - remove <[diamond]>
         on player chats:
-        - define words <context.message.split[ ].shared_contents[<server.flag[forbidden_words]>]>
+        - define words <context.message.split.shared_contents[<server.flag[forbidden_words]>]>
         - if <[words].is_empty>:
             - stop
         - determine passively cancelled

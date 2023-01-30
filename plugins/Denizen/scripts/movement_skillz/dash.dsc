@@ -3,17 +3,8 @@
 
 
 # Flags:
-# capable_to_dash:
-#   Without this flag, you cannot dash. It's pretty much here just to prevent everyone from doing it lel
-#   Can be added in specific scenarios or toggled with the /toggledash command.
-#
 # can_dash:
 #   This flag is for when the player just crouched and is eligible to perform a dash.
-
-
-# Permissions:
-# chaozen.toggledash:
-#   This is the only permission in this script, it's for the command to toggle the 'capable_to_dash' flag at the user's will.
 
 
 dash_handler:
@@ -27,7 +18,7 @@ dash_handler:
         vector_multiplicator: 2
     debug: false
     events:
-        after player stops sneaking flagged:capable_to_dash|!second_sneak|!can_dash|!on_dash_cooldown:
+        after player stops sneaking flagged:!second_sneak|!can_dash|!on_dash_cooldown:
         - flag <player> on_dash_cooldown expire:<script.data_key[data.cooldown_between_dashes]>
         - flag <player> second_sneak expire:<script.data_key[data.time_to_dash]>
         after player stops sneaking flagged:second_sneak|!can_dash:

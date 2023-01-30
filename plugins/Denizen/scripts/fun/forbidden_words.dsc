@@ -24,7 +24,7 @@ forbidden_words:
             - stop
         - flag server forbidden_words:->:<[word]>
         - customevent id:forbidden_word_created context:[word=<[word]>]
-        on player empties water_bucket:
+        after player empties water_bucket:
         - define diamonds <context.relative.find_entities[dropped_item].within[1.5]>
         - if <[diamonds].is_empty>:
             - stop

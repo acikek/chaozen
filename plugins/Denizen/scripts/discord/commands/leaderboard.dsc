@@ -15,12 +15,14 @@ clippy_leaderboard_command:
 
 clippy_leaderboard_format:
     type: procedure
+    debug: false
     definitions: player
     script:
     - determine "**<[player].display_name>**: **<[player].flag[forbidden_word_counts.used].if_null[0]>** used, **<[player].flag[forbidden_word_counts.removed].if_null[0]>** removed"
 
 clippy_leaderboard_handler:
     type: world
+    debug: false
     events:
         on discord slash command name:leaderboard:
         - discordinteraction defer interaction:<context.interaction>

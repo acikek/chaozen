@@ -66,6 +66,7 @@ forbidden_words_listeners:
 
 forbidden_words_counters:
     type: world
+    debug: false
     events:
         #after custom event id:forbidden_word_created:
         #- flag <player> forbidden_word_counts.created:++

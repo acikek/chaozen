@@ -15,12 +15,12 @@ restraining_order_handler:
             - if <context.item.has_flag[restrained]>:
                 - stop
             - define slot <player.held_item_slot>
-            - inventory flag slot:<[slot]> restrained:<context.entity.name>
+            - inventory flag slot:<[slot]> restrained:<context.entity.if_null[<empty>]>
             - define item <player.item_in_hand>
-            - inventory adjust slot:<[slot]> lore:<&7>Attached<&sp>to<&sp><[item].flag[restrained]>
+            - inventory adjust slot:<[slot]> lore:<&7>Attached<&sp>to<&sp><[item].flag[restrained].name>
             - flag <context.entity> restraining_order_<player>:<player>
             - flag <context.entity> restraining_order<player>
-            - narrate "<&7>You have <[item].flag[restrained]> set for your restraining order!"
+            - narrate "<&7>You have <[item].flag[restrained].name> set for your restraining order!"
 
         on player holds item item:restraining_order:
             - flag player holding_restraining_order

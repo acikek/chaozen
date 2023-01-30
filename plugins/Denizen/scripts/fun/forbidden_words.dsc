@@ -3,10 +3,12 @@ get_forbidden_word:
     debug: false
     definitions: item|should_exist
     script:
+    - if <[should_exist]> and not <server.has_flag[forbidden_words]>:
+        - determine null
     - if <[item].material.name> != diamond or !<[item].has_display>:
         - determine null
     - define word <[item].display.strip_color.to_lowercase.before[ ]>
-    - if <server.flag[forbidden_words].contains[<[word]>]> == <[should_exist]>:
+    - if <server.flag[forbidden_words].contains[<[word]>].if_null[false]> == <[should_exist]>:
         - determine <[word]>
     - determine null
 

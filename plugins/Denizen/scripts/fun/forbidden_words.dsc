@@ -41,7 +41,8 @@ forbidden_words:
         - if <[words].is_empty>:
             - stop
         - determine passively cancelled
-        - customevent id:forbidden_words_used context:[words=<[words]>]
+        - define noun word<[words].size.is_more_than[1].if_true[s].if_false[<empty>]>
+        - customevent id:forbidden_words_used context:[words=<[words]>;noun=<[noun]>]
 
 forbidden_words_listeners:
     type: world
@@ -57,6 +58,5 @@ forbidden_words_listeners:
         - playsound <server.online_players> sound:entity_player_levelup sound_category:master
         after custom event id:forbidden_words_used:
         - strike <player.location>
-        - define noun word<context.words.size.is_more_than[1].if_true[s].if_false[<empty>]>
         - define formatted_words <context.words.parse_tag[<red><bold><strikethrough><[parse_value].strip_color><&[emphasis]>]>
         - announce "<&[emphasis]>➞ <player.display_name> has muttered the <[noun]>: <[formatted_words].separated_by[, ]>!"

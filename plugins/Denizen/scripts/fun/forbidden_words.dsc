@@ -33,8 +33,10 @@ forbidden_words:
         - if <[word]> == null:
             - stop
         - flag server forbidden_words:<-:<[word]>
-        # can't have shit in detroit
-        - take water_bucket
+        - if <context.relative.material.name> == water:
+            - modifyblock <context.relative> air
+        - else:
+            - adjustblock <context.location> waterlogged:false
         - customevent id:forbidden_word_removed context:[word=<[word]>;location=<[diamond].location>]
         - remove <[diamond]>
         on player chats:

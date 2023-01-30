@@ -15,7 +15,7 @@ restraining_order_handler:
                 - stop
             - inventory flag slot:hand restrained:<context.entity.name>
             - define item <player.item_in_hand>
-            - inventory adjust slot:hand "lore:<&7>Attached to <[item].flag[restrained]>""
+            - inventory adjust slot:hand "lore:<&7>Attached to <[item].flag[restrained]>"
             - flag <context.entity> restraining_order:->:<player>
             - narrate "<&7>You have placed a restraining order on <[item].flag[restrained]>!"
 

@@ -6,7 +6,6 @@ restraining_order:
         uuid: <util.random_uuid>
     lore:
         - <&7>Right click to assign to a player!
-
 restraining_order_handler:
     type: world
     debug: true
@@ -15,19 +14,16 @@ restraining_order_handler:
             - if <context.item.has_flag[restrained]>:
                 - stop
             - define slot <player.held_item_slot>
-            - inventory flag slot:<[slot]> restrained:<context.entity.if_null[<empty>]>
+            - inventory flag slot:<[slot]> restrained:<context.entity.name>
             - define item <player.item_in_hand>
-            - inventory adjust slot:<[slot]> lore:<&7>Attached<&sp>to<&sp><[item].flag[restrained].name>
-            - flag <context.entity> restraining_order_<player>:<player>
-            - flag <context.entity> restraining_order<player>
-            - narrate "<&7>You have <[item].flag[restrained].name> set for your restraining order!"
-
+            - inventory adjust slot:<[slot]> "lore:<&7>Attached to <[item].flag[restrained]>""
+            - flag <context.entity> restraining_order:->:<player>
+            - narrate "<&7>You have placed a restraining order on <[item].flag[restrained]>!"
         on player holds item item:restraining_order:
             - flag player holding_restraining_order
         on player holds item item:!restraining_order flagged:holding_restraining_order:
             - flag player holding_restraining_order:!
-
         on player steps on block flagged:holding_restraining_order:
-            - define target <player.location.find_players_within[5].filter[flag[restraining_order_<player>].equals[<player>]]>
+            - define target <player.location.find_players_within[5].filter[flag[restraining_order].contains[<player>]]>
             - if <[target].any>:
                 - adjust <[target].first> velocity:<[target].first.location.sub[<player.location>].with_y[0.5].normalize.mul[0.5]>

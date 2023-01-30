@@ -59,4 +59,14 @@ forbidden_words_listeners:
         after custom event id:forbidden_words_used:
         - strike <player.location>
         - define formatted_words <context.words.parse_tag[<red><bold><strikethrough><[parse_value].strip_color><&[emphasis]>]>
-        - announce "<&[emphasis]>➞ <player.display_name> has muttered the <[noun]>: <[formatted_words].separated_by[, ]>!"
+        - announce "<&[emphasis]>➞ <player.display_name> has muttered the <context.noun>: <[formatted_words].separated_by[, ]>!"
+
+forbidden_words_counters:
+    type: world
+    events:
+        #after custom event id:forbidden_word_created:
+        #- flag <player> forbidden_word_counts.created:++
+        after custom event id:forbidden_word_removed:
+        - flag <player> forbidden_word_counts.removed:++
+        after custom event id:forbidden_words_used:
+        - flag <player> forbidden_word_counts.used:+:<context.words.size>

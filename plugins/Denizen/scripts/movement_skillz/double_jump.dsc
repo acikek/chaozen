@@ -12,11 +12,6 @@
 #   This flag is for when the player just jumped and is eligible to perform a double jump.
 
 
-# Permissions:
-# chaozen.toggledoublejump:
-#   This is the only permission in this script, it's for the command to toggle the 'capable_to_double_jump' flag at the user's will.
-
-
 double_jump_handler:
     type: world
     data:
@@ -52,7 +47,6 @@ toggledoublejump_command:
     name: toggledoublejump
     description: Toggles your capability of double jumping.
     usage: /toggledoublejump
-    permission: chaozen.toggledoublejump
     script:
     - if !<context.args.is_empty>:
         - narrate "<&[error]>Too many arguments!"

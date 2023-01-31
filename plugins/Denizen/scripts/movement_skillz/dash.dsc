@@ -26,8 +26,8 @@ dash_handler:
         - flag <player> can_dash expire:<script.data_key[data.time_to_dash]>
         after player walks flagged:can_dash:
         - ratelimit <player> 2t
-        # Doing this because different yaw and pitch technically is a different location, but it's not what I'm looking for
-        - if <context.old_location.with_yaw[0].with_pitch[0]> != <context.new_location.with_yaw[0].with_pitch[0]>:
+        # Checks if the player actually moved
+        - if <context.old_location.distance[<context.new_location>]> != 0:
             - flag <player> can_dash:!
             - adjust <player> velocity:<context.new_location.sub[<context.old_location>].normalize.mul[<script.data_key[data.vector_multiplicator]>]>
             - flag <player> dash_particles expire:0.2s

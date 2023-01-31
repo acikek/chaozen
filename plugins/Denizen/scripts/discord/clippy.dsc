@@ -16,5 +16,5 @@ clippy_yay:
     debug: false
     events:
         after discord message received message:*yay*:
-            - if <context.new_message.author.is_bot>:
+            - if !<context.new_message.author.is_bot>:
                 - ~discordmessage id:bot "+<&gt> YAY!!!" channel:<context.channel>

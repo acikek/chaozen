@@ -7,6 +7,13 @@ blindfold:
     lore:
         - <&7>Your vision is obscured by something.
         - <&7>Somehow, you feel safer.
+    recipes:
+        1:
+            type: shaped
+            input:
+            - air|air|air
+            - black_wool|black_wool|air
+            - air|air|air
 
 
 blindfold_wear:

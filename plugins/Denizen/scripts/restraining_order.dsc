@@ -5,8 +5,10 @@ restraining_order:
     flags:
         uuid: <util.random_uuid>
     lore:
-        - <&7>Right click to assign a
-        - <&7>player to restrain!
+        - <&7>Right click a player
+        - <&7>to restrain them from
+        - <&7>you!
+
 restraining_order_handler:
     type: world
     debug: false
@@ -14,11 +16,11 @@ restraining_order_handler:
         on player right clicks entity with:restraining_order type:player:
             - if <context.item.has_flag[restrained]>:
                 - stop
-            - inventory flag slot:hand restrained:<context.entity.name>
+            - inventory flag slot:hand restrained:<context.entity>
             - define item <player.item_in_hand>
-            - inventory adjust slot:hand "lore:<&7>Attached to <[item].flag[restrained]>"
-            - flag <context.entity> restraining_order:->:<player>
-            - narrate "<&7>You have placed a restraining order on <[item].flag[restrained]>!"
+            - inventory adjust slot:hand "lore:<&7>Attached to <[item].flag[restrained].name>"
+            - flag <[item].flag[restrained]> restraining_order:->:<player>
+            - narrate "<&7>You have placed a restraining order on <[item].flag[restrained].name>!"
 
         on player holds item item:restraining_order:
             - flag player holding_restraining_order

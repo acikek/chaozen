@@ -16,8 +16,6 @@ dash_handler:
         time_to_dash: 0.5s
         # This basically indicates how fast the dash will be and how far it will go
         vector_multiplicator: 2
-        # How long the dash particle exists for
-        particle_time: 0.3s
     debug: false
     events:
         after player stops sneaking flagged:!second_sneak|!can_dash|!on_dash_cooldown:
@@ -29,11 +27,10 @@ dash_handler:
         after player walks flagged:can_dash:
         - ratelimit <player> 2t
         # Checks if the player actually moved
-        # .with_y[0] to prevent jumping and flying directly upwards
-        - if <context.old_location.with_y[0].distance[<context.new_location.with_y[0]>]> != 0:
+        - if <context.old_location.distance[<context.new_location>]> != 0:
             - flag <player> can_dash:!
-            - adjust <player> velocity:<context.new_location.sub[<context.old_location>].normalize.mul[<script.data_key[data.vector_multiplicator]>].with_y[0]>
-            - flag <player> dash_particles expire:<script.data_key[data.particle_time]>
+            - adjust <player> velocity:<context.new_location.sub[<context.old_location>].normalize.mul[<script.data_key[data.vector_multiplicator]>]>
+            - flag <player> dash_particles expire:0.2s
         after player walks flagged:dash_particles:
         - ratelimit <player> 1t
         - playeffect effect:vibration at:<context.old_location.above> quantity:10 offset:0.2 special_data:2t|<context.old_location.above>|<context.new_location.above>

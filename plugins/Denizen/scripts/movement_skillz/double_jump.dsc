@@ -47,6 +47,7 @@ toggledoublejump_command:
     name: toggledoublejump
     description: Toggles your capability of double jumping.
     usage: /toggledoublejump
+    debug: false
     script:
     - if !<context.args.is_empty>:
         - narrate "<&[error]>Too many arguments!"

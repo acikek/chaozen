@@ -10,5 +10,11 @@ discord_bridge:
         - discordmessage id:bot channel:1069156072197210112 "<&gt> *<player.name> joined*"
         after player quit:
         - discordmessage id:bot channel:1069156072197210112 "<&gt> *<player.name> left*"
+        after custom event id:forbidden_word_created:
+        - discordmessage id:bot channel:1069156072197210112 "<&gt> *'<context.word>' is now a **forbidden word!***"
+        after custom event id:forbidden_words_used:
+        - discordmessage id:bot channel:1069156072197210112 "`<player.name>`: *used forbidden <context.noun>: **<context.words.formatted>***"
+        after custom event id:forbidden_word_removed:
+        - discordmessage id:bot channel:1069156072197210112 "<&gt> *The forbidden word '<context.word>' has been **purified!***"
         after player dies:
         - discordmessage id:bot channel:1069156072197210112 "<&gt> *<context.message.strip_color>*"

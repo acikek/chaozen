@@ -5,7 +5,8 @@ restraining_order:
     flags:
         uuid: <util.random_uuid>
     lore:
-        - <&7>Right click to assign to a player!
+        - <&7>Right click to assign a
+        - <&7>player to restrain!
 restraining_order_handler:
     type: world
     debug: true

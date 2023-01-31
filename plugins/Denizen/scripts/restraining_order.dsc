@@ -9,7 +9,7 @@ restraining_order:
         - <&7>player to restrain!
 restraining_order_handler:
     type: world
-    debug: true
+    debug: false
     events:
         on player right clicks entity with:restraining_order type:player:
             - if <context.item.has_flag[restrained]>:

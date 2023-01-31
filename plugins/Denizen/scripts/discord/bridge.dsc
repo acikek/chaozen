@@ -1,5 +1,6 @@
 discord_bridge:
     type: world
+    debug: false
     events:
         after player chats:
         - discordmessage id:bot channel:1069156072197210112 "`<player.name>`: <context.message>"

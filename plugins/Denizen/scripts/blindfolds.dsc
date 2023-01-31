@@ -27,11 +27,10 @@ blindfold_wear:
         after player clicks blindfold in inventory slot:40:
             - flag <player> blindfolded:!
 
-        on delta time secondly:
-            - repeat 4:
-                - foreach <server.online_players_flagged[blindfolded]> as:__player:
-                    - cast blindness amplifier:155 duration:3s no_icon hide_particles
-                    - cast darkness amplifier:155 duration:3s no_icon hide_particles
+        on delta time secondly every:3:
+            - foreach <server.online_players_flagged[blindfolded]> as:__player:
+                - cast blindness amplifier:155 duration:3s no_icon hide_particles
+                - cast darkness amplifier:155 duration:3s no_icon hide_particles
 
         on enderman targets player flagged:blindfolded:
             - determine passively cancelled

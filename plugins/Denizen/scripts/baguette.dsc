@@ -16,12 +16,23 @@ baguette:
 
 baguette_eat:
     type: world
-    debug: false
+    debug: true
     events:
         on player consumes baguette:
             - define item <player.item_in_hand>
             - if <[item].flag[bites]> <= 0:
                 - stop
+            - determine passively cancelled
+            - choose <[item].flag[bites]>:
+                - case 4:
+                    - define amount 2
+                - case 3:
+                    - define amount 4
+                - case 2:
+                    - define amount 7
+                - case 1:
+                    - define amount 9
+            - feed amount:<[amount]> saturation:<[item].flag[bites].add[4]>
             - inventory flag slot:hand bites:-:1
-            - narrate <[item].flag[bites]>
             - inventory adjust slot:hand "lore:<&7>Its so long that it<n><&7>takes 5 bites to eat.<n><&7><n><&7>Bites left: <&8><[item].flag[bites]>"
+

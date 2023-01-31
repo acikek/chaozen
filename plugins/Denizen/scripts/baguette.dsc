@@ -4,6 +4,7 @@ baguette:
     material: bread
     flags:
         bites: 4
+        allergy: true
     lore:
     - <&7>It's so long that it
     - <&7>takes 5 bites to eat.
@@ -21,7 +22,7 @@ baguette_eat:
         on player consumes baguette:
             - define item <player.item_in_hand>
             - if <[item].flag[bites]> <= 0:
-                - feed amount:12 saturation:20
+                - feed amount:17 saturation:<[item].flag[bites].add[4]>
                 - stop
             - determine passively cancelled
             - choose <[item].flag[bites]>:

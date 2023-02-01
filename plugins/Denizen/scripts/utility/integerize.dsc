@@ -1,5 +1,15 @@
 integerize:
     type: procedure
+    definitions: element[decimal/integer you want to convert to an integer]
+    script:
+        - determine 0 if:<[element].is_decimal.not>
+        - determine <[element]> if:<[element].is_integer>
+        - while <[element].is_integer.not>:
+            - define element:*:10
+        - determine <[element]>
+
+integerize_list:
+    type: procedure
     definitions: list[list of decimals and/or integers you want to convert to integers]
     script:
         # Returns an empty list if the list is empty

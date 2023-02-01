@@ -15,11 +15,6 @@ mob_modifier_registry:
         - define config <script[mob_modifier_config]>
 
         - flag server mob_modifiers.chance:<[config].data_key[chance]>
-        
-        - define builds <[config].data_key[builds]>
-
-        - define total_weights <[builds]>
-
 
 mob_modifier_reload:
     type: world

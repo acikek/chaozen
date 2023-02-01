@@ -6,8 +6,8 @@ mob_modifier_registry:
     debug: false
     script:
         - define valid_modifiers <util.scripts.filter_tag[<[filter_value].data_key[mob_modifier].exists>].parse_tag[<[parse_value].data_key[mob_modifier].with[id].as[<[parse_value].name.after[mob_mod_]>]>]>
-        - define prefix_modifiers <[valid_modifiers].filter_tag[<[filter_value].get[type].equals[prefix]>]>
-        - define suffix_modifiers <[valid_modifiers].filter_tag[<[filter_value].get[type].equals[suffix]>]>
+        - define prefix_modifiers <[valid_modifiers].filter_tag[<[filter_value].get[type].equals[prefix]>].parse_tag[<[parse_value].get[id]>]>
+        - define suffix_modifiers <[valid_modifiers].filter_tag[<[filter_value].get[type].equals[suffix]>].parse_tag[<[parse_value].get[id]>]>
 
         - flag server mob_modifiers.prefixes:<[prefix_modifiers]>
         - flag server mob_modifiers.suffixes:<[suffix_modifiers]>

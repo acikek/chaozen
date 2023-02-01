@@ -4,7 +4,6 @@ baguette:
     material: bread
     flags:
         bites: 4
-        allergy: true
     lore:
     - <&7>It's so long that it
     - <&7>takes 5 bites to eat.
@@ -25,12 +24,15 @@ baguette_eat:
                 - feed amount:17 saturation:<[item].flag[bites].add[4]>
                 - stop
             - determine passively cancelled
-            - definemap map:
-                4: 2
-                3: 4
-                2: 6
-                1: 8
-            - define amount <[map].get[<[item].flag[bites]>]>
+            - choose <[item].flag[bites]>:
+                - case 4:
+                    - define amount 2
+                - case 3:
+                    - define amount 4
+                - case 2:
+                    - define amount 6
+                - case 1:
+                    - define amount 8
             - feed amount:<[amount]> saturation:<[item].flag[bites].add[4]>
             - inventory flag slot:hand bites:--
             - inventory adjust slot:hand "lore:<&7>Its so long that it<n><&7>takes 5 bites to eat.<n><&7><n><&7>Bites left: <&8><[item].flag[bites]>"

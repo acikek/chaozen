@@ -8,7 +8,7 @@ mob_modifiers_spawned_entity:
             - define build <script[mob_modifier_config].data_key[builds].get[<[build]>]>
             - define valid_prefixes <[build].proc[mob_modifiers_get_valid_prefixes_for_build]>
             - define valid_suffixes <[build].proc[mob_modifiers_get_valid_suffixes_for_build]>
-            - if <[valid_prefixes].is_empty> and <[valid_suffixes].is_empty>:
+            - if <[valid_prefixes].size> < <[build].get[prefixes]> or <[valid_suffixes].size> < <[build].get[suffixes]>:
                 - stop
             - define selected_prefixes <[valid_prefixes].random[<[build].get[prefixes]>]>
             - define selected_suffixes <[valid_suffixes].random[<[build].get[suffixes]>]>

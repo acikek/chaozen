@@ -1,3 +1,5 @@
+# Collection of procedures for Mob Modifiers relating to the build system and getting random builds.
+
 mob_modifiers_get_valid_builds:
     type: procedure
     definitions: entity[entity to match against]

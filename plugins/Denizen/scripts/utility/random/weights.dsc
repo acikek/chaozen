@@ -2,9 +2,12 @@ get_random_item_from_weighted_map:
     type: procedure
     definitions: map[map of keys with the values being the weight of the key]
     script:
+        # Ensure all the weights are integers.
         - foreach <[map]> as:weight key:item:
             - define integerized_map <[map].with[<[item]>].as[<[weight].proc[integerize]>]>
+        # Redefine the map with the integerized weights.
         - define map <[integerized_map]>
+        # Get a random number between 0 and the total weight.
         - define total 0
         - foreach <[map]> as:weight key:item:
             - define total:+:<[weight]>
@@ -12,5 +15,6 @@ get_random_item_from_weighted_map:
         - define current 0
         - foreach <[map].sort_by_value.reverse> as:weight key:item:
             - define current:+:<[weight]>
+            # If the current weight is greater than or equal to the random number, return the item.
             - if <[current]> >= <[random]>:
                 - determine <[item]>

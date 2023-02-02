@@ -4,8 +4,7 @@ mob_modifiers_spawned_entity:
     events:
         on !player spawns:
             - stop if:<util.random_chance[<server.flag[mob_modifiers.chance]>].not>
-            - define build <context.entity.proc[mob_modifiers_get_random_build]>
-            - define build <script[mob_modifier_config].data_key[builds].get[<[build]>]>
+            - define build <script[mob_modifier_config].data_key[builds].get[<context.entity.proc[mob_modifiers_get_random_build]>]>
             - define valid_prefixes <[build].proc[mob_modifiers_get_valid_prefixes_for_build]>
             - define valid_suffixes <[build].proc[mob_modifiers_get_valid_suffixes_for_build]>
             - if <[valid_prefixes].size> < <[build].get[prefixes]> or <[valid_suffixes].size> < <[build].get[suffixes]>:

@@ -1,5 +1,6 @@
 integerize:
     type: procedure
+    debug: false
     description: Multiplies a decimal or integer by 10 until it is an integer.
     definitions: element[decimal/integer you want to convert to an integer]
     script:
@@ -11,6 +12,7 @@ integerize:
 
 integerize_list:
     type: procedure
+    debug: false
     description: Multiplies a list of decimals and/or integers by 10 until all are integers.
     definitions: list[list of decimals and/or integers you want to convert to integers]
     script:

@@ -3,6 +3,7 @@
 
 mob_mod_speedy:
     type: world
+    debug: false
     mob_modifier:
         type: prefix
     events:

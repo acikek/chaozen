@@ -3,6 +3,7 @@
 
 mob_mod_exploding:
     type: world
+    debug: false
     mob_modifier:
         type: suffix
     events:

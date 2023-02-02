@@ -1,5 +1,6 @@
 snake_case_to_title_case:
     type: procedure
+    debug: false
     description: Converts a snake_case element to title case.
     definitions: element[snake_case element you wish to convert to title case]
     script:

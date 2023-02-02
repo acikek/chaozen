@@ -1,5 +1,6 @@
 get_random_item_from_weighted_map:
     type: procedure
+    debug: false
     description:
         - Gets a random item from a map of keys (the items (not an actual item) to select from) and values (the weights of the items).
         - Example: <map[diamond_sword=1;stone=5]>

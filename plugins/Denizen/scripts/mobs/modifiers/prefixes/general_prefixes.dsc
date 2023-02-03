@@ -19,4 +19,14 @@ mob_mod_armored:
         after entity_flagged:mob_modifiers.armored spawns:
             - flag <context.entity> armored:0 if:<context.entity.has_flag[armored].not>
             - flag <context.entity> armored:+:5
-    
+
+mob_mod_regenerating:
+    type: world
+    debug: false
+    mob_modifier:
+        type: prefix
+    events:
+        after entity_flagged:mob_modifiers.regenerating damaged:
+            - stop if:<context.entity.exists.not>
+            - cast regeneration <context.entity> amplifier:2 duration:<util.random.int[3].to[10]>s
+            - playeffect at:<context.entity.eye_location> quantity:50 effect:villager_happy offset:0.5,0.5,0.5

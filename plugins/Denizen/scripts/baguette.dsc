@@ -35,5 +35,5 @@ baguette_eat:
             - define amount <[bite_count].get[<[item].flag[bites]>]>
             - feed amount:<[amount]> saturation:<[item].flag[bites].add[4]>
             - inventory flag slot:hand bites:--
-            - inventory adjust slot:hand "lore:<&7>Its so long that it<n><&7>takes 5 bites to eat.<n><&7><n><&7>Bites left: <&8><[item].flag[bites]>"
+            - inventory adjust slot:hand "lore:<[item].lore.get[1].to[-2].separated_by[<n>]><n><&7>Bites left: <&8><[item].flag[bites]>"
 

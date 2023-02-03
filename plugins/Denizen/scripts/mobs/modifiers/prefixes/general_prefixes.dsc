@@ -9,3 +9,14 @@ mob_mod_speedy:
     events:
         after entity_flagged:mob_modifiers.speedy spawns:
             - adjust <context.entity> speed:<context.entity.speed.mul[1.5]>
+
+mob_mod_armored:
+    type: world
+    debug: false
+    mob_modifier:
+        type: prefix
+    events:
+        after entity_flagged:mob_modifiers.armored spawns:
+            - flag <context.entity> armored:0 if:<context.entity.has_flag[armored].not>
+            - flag <context.entity> armored:+:5
+    

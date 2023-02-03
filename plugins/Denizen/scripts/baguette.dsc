@@ -29,4 +29,3 @@ baguette_eat:
             - feed amount:<[amount]> saturation:<[item].flag[bites].add[4]>
             - inventory flag slot:hand bites:--
             - inventory adjust slot:hand "lore:<[item].lore.set[<&7>Bites left: <&8><[item].flag[bites]>].at[4]>"
-

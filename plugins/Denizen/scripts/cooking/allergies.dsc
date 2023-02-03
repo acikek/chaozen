@@ -3,13 +3,13 @@ allergies:
     debug: false
     events:
         on player dies:
-
-            - define allergy <script[allergy_info].data_key[valid_allergies].keys.random>
-            - define effect <script[allergy_info].data_key[valid_effects].keys.random>
-            - flag player allergic:<[allergy]>
-            - narrate <[allergy]>
-            - flag player allergy_effect:<[effect]>
-            - stop
+            - if <util.random_chance[12]>:
+                - define allergy <script[allergy_info].data_key[valid_allergies].keys.random>
+                - define effect <script[allergy_info].data_key[valid_effects].keys.random>
+                - flag player allergic:<[allergy]>
+                - narrate <[allergy]>
+                - flag player allergy_effect:<[effect]>
+                - stop
             - flag player allergic:!
             - flag player allergy_effect:!
 

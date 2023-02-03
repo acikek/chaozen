@@ -30,3 +30,12 @@ mob_mod_regenerating:
             - stop if:<context.entity.exists.not>
             - cast regeneration <context.entity> amplifier:2 duration:<util.random.int[3].to[10]>s
             - playeffect at:<context.entity.eye_location> quantity:50 effect:villager_happy offset:0.5,0.5,0.5
+
+mob_mod_venomous:
+    type: world
+    debug: false
+    mob_modifier:
+        type: prefix
+    events:
+        after entity damaged by entity_flagged:mob_modifiers.venomous:
+            - cast <list[poison|wither].random> <context.entity> amplifier:2 duration:5s

@@ -39,3 +39,16 @@ mob_mod_venomous:
     events:
         after entity damaged by entity_flagged:mob_modifiers.venomous:
             - cast <list[poison|wither].random> <context.entity> amplifier:2 duration:5s
+
+mob_mod_enhanced:
+    type: world
+    debug: false
+    mob_modifier:
+        type: prefix
+    events:
+        after entity_flagged:mob_modifiers.enhanced spawns:
+            - adjust <context.entity> speed:<context.entity.speed.mul[1.35]>
+            - adjust <context.entity> max_health:<context.entity.health_max.mul[1.35]>
+            - heal <context.entity>
+        on entity damaged by entity_flagged:mob_modifiers.enhanced:
+            - determine <context.damager.mul[1.35]>

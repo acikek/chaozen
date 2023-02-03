@@ -14,8 +14,8 @@ allergies:
 
         on player consumes item flagged:allergic:
 
-            - define allergies <script[allergy_info].data_key[valid_allergies.<player.flag[allergic]>]>
-            - if <[allergies].contains[<context.item.script.name.if_null[<context.item.material.name>]>]>:
+            - define allergies_data <script[allergy_info].data_key[valid_allergies.<player.flag[allergic]>]>
+            - if <[allergies_data].contains[<context.item.script.name.if_null[<context.item.material.name>]>]>:
                 - foreach <script[allergy_info].data_key[valid_effects.<player.flag[allergy_effect]>]> as:a key:b:
                     - cast <[b]> duration:<[a].get[duration]> amplifier:<[a].get[amplifier]> hide_particles no_icon
 

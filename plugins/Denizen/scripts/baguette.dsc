@@ -25,7 +25,7 @@ baguette_eat:
                 - feed amount:17 saturation:<[item].flag[bites].add[4]>
                 - stop
             - determine passively cancelled
-            - define amount <element[10].sub[<element[2].mul[<[item].flag[bites]>]>]>
+            - define amount <element[10].sub[<[item].flag[bites].mul[2]>]>
             - feed amount:<[amount]> saturation:<[item].flag[bites].add[4]>
             - inventory flag slot:hand bites:--
             - inventory adjust slot:hand "lore:<[item].lore.set[<&7>Bites left: <&8><[item].flag[bites]>].at[4]>"

@@ -1,6 +1,6 @@
 allergies:
     type: world
-    debug: true
+    debug: false
     events:
         on player dies:
 

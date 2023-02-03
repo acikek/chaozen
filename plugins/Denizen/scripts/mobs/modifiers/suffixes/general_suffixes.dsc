@@ -9,3 +9,14 @@ mob_mod_exploding:
     events:
         on entity_flagged:mob_modifiers.exploding dies:
             - explode <context.entity.eye_location> power:1.3
+
+mob_mod_supercharged:
+    type: world
+    debug: false
+    mob_modifier:
+        type: suffix
+    events:
+        on entity_flagged:mob_modifiers.supercharged dies:
+            - foreach <context.entity.eye_location.find_entities[living].within[5]> as:target:
+                - strike <[target].location>
+                - burn <[target]> duration:5s if:<[target].on_fire.not>

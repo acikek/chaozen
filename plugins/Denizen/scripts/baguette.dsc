@@ -4,8 +4,6 @@ baguette:
     material: bread
     flags:
         bites: 4
-        allergy: true
-        # Allergy flag is for future project
         uuid: <util.random_uuid>
     lore:
     - <&7>It's so long that it
@@ -27,13 +25,8 @@ baguette_eat:
                 - feed amount:17 saturation:<[item].flag[bites].add[4]>
                 - stop
             - determine passively cancelled
-            - definemap bite_count:
-                4: 2
-                3: 4
-                2: 6
-                1: 8
-            - define amount <[bite_count].get[<[item].flag[bites]>]>
+            - define amount <element[10].sub[<element[2].mul[<[item].flag[bites]>]>]>
             - feed amount:<[amount]> saturation:<[item].flag[bites].add[4]>
             - inventory flag slot:hand bites:--
-            - inventory adjust slot:hand "lore:<[item].lore.get[1].to[-2].separated_by[<n>]><n><&7>Bites left: <&8><[item].flag[bites]>"
+            - inventory adjust slot:hand "lore:<[item].lore.set[<&7>Bites left: <&8><[item].flag[bites]>].at[4]>"
 

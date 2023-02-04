@@ -34,7 +34,7 @@ allergy_info:
             - baguette
             - cake
             - cookie
-        diary:
+        lactose:
             - milk_bucket
             - cake
         pumpkin:

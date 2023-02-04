@@ -12,7 +12,7 @@ allergies:
             - flag player allergic:!
             - flag player allergy_effect:!
 
-        on player consumes item flagged:allergic:
+        on entity_flagged:allergic consumes item:
 
             - define allergies <script[allergy_info].data_key[valid_allergies.<player.flag[allergic]>]>
             - if <[allergies].contains[<context.item.script.name.if_null[<context.item.material.name>]>]>:

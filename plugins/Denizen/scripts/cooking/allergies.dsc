@@ -54,6 +54,7 @@ allergy_info:
             - cake
             - cookie
             - pumpkin_pie
+            - honey
         honey:
             - honey_bottle
 

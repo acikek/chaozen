@@ -6,8 +6,6 @@ player_restraints:
             - determine passively cancelled
         on player steps on block flagged:util.nostep:
             - determine passively cancelled
-        on player jumps flagged:util.nojump:
-            - determine passively cancelled
         on player dies flagged:util.nodie:
             - determine passively cancelled
         on player damaged by FALL flagged:util.nofall:

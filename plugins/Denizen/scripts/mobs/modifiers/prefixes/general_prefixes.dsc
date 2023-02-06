@@ -52,3 +52,15 @@ mob_mod_enhanced:
             - heal <context.entity>
         on entity damaged by entity_flagged:mob_modifiers.enhanced:
             - determine <context.damager.mul[1.35]>
+
+mob_mod_crushing:
+    type: world
+    debug: false
+    mob_modifier:
+        type: prefix
+    events:
+        after entity damaged by entity_flagged:mob_modifiers.crushing:
+            - playsound <context.entity.eye_location> sound:entity_zombie_villager_cure volume:1.5 pitch:0.5
+            - hurt <context.entity> <context.entity.effects_data.size.div[3]> source:<context.attacker>
+            - cast slow <context.entity> amplifier:2 duration:10s
+            - cast weakness <context.entity> amplifier:2 duration:10s

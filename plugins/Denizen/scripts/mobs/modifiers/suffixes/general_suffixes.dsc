@@ -29,3 +29,12 @@ mob_mod_ignored:
     events:
         on entity targets entity_flagged:mob_modifiers.ignored:
             - determine cancelled
+
+mob_mod_butchering:
+    type: world
+    debug: false
+    mob_modifier:
+        type: suffix
+    events:
+        on entity damaged by entity_flagged:mob_modifiers.butchering:
+            - determine <context.damage.mul[<context.attacker.eye_location.find.living_entities.within[10].exclude[<context.entity>|<context.attacker>].size.mul[0.1].add[1]>]>

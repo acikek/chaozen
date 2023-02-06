@@ -4,6 +4,7 @@
 mob_modifier_registry:
     type: task
     debug: false
+    description: Registers all mob modifiers.
     script:
         # Get all scripts that start with "mob_mod_" and parse their ids.
         # There is technically no requirement that the script name starts with "mob_mod_" but it is recommended for organization.

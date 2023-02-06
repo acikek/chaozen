@@ -28,6 +28,7 @@ mob_modifiers_get_valid_modifiers_for_build:
 mob_modifiers_get_valid_prefixes_for_build:
     type: procedure
     debug: false
+    description: Gets a list of valid prefixes for a given build.
     definitions: build[build to match against]
     script:
         - define prefixes <server.flag[mob_modifiers.prefixes]>
@@ -40,6 +41,7 @@ mob_modifiers_get_valid_prefixes_for_build:
 mob_modifiers_get_valid_suffixes_for_build:
     type: procedure
     debug: false
+    description: Gets a list of valid suffixes for a given build.
     definitions: build[build to match against]
     script:
         - define suffixes <server.flag[mob_modifiers.suffixes]>
@@ -52,6 +54,7 @@ mob_modifiers_get_valid_suffixes_for_build:
 mob_modifiers_get_random_build:
     type: procedure
     debug: false
+    description: Gets a random build from the build list for an entity.
     definitions: entity[entity to match with]
     script:
         - define builds <[entity].proc[mob_modifiers_get_valid_builds]>

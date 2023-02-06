@@ -10,7 +10,7 @@ mob_modifier_config:
             color: <color[gray]>
             prefixes: 1
             suffixes: 0
-            weight: 3
+            weight: 75
             matches: monster
             blacklisted_modifiers:
                 - none
@@ -19,7 +19,25 @@ mob_modifier_config:
             color: <color[blue]>
             prefixes: 3
             suffixes: 1
-            weight: 1
+            weight: 25
+            matches: monster
+            blacklisted_modifiers:
+                - none
+        epic:
+            name: Epic
+            color: <color[purple]>
+            prefixes: 6
+            suffixes: 2
+            weight: 15
+            matches: monster
+            blacklisted_modifiers:
+                - none
+        legendary:
+            name: Legendary
+            color: <color[orange]>
+            prefixes: 9
+            suffixes: 3
+            weight: 10
             matches: monster
             blacklisted_modifiers:
                 - none

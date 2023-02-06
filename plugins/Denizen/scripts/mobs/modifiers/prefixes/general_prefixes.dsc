@@ -17,8 +17,7 @@ mob_mod_shellback:
         type: prefix
     events:
         after entity_flagged:mob_modifiers.shellback spawns:
-            - flag <context.entity> armored:0 if:<context.entity.has_flag[armored].not>
-            - flag <context.entity> armored:+:5
+            - run shelled_add def.entity:<context.entity> def.amount:5
 
 mob_mod_regenerating:
     type: world

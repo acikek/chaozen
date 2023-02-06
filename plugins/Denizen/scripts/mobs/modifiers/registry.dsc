@@ -1,7 +1,7 @@
 # All modifier scripts should start with "mob_mod_" and end with the name of the modifier.
 # "mob_mod_" is cropped from the id when the modifier is registered.
 
-mob_modifier_registry:
+mob_modifier_register:
     type: task
     debug: false
     description: Registers all mob modifiers.
@@ -28,6 +28,6 @@ mob_modifier_reload:
     debug: false
     events:
         after server start:
-            - inject mob_modifier_registry
+            - inject mob_modifier_register
         after reload scripts:
-            - inject mob_modifier_registry
+            - inject mob_modifier_register

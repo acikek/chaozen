@@ -2,7 +2,7 @@ mob_modifiers_spawned_entity:
     type: world
     debug: false
     events:
-        on !player spawns:
+        on living spawns:
             # If the random chance for it to have modifiers is not met, stop.
             - stop if:<util.random_chance[<server.flag[mob_modifiers.chance]>].not>
             # Get a random build from the config based on the entity.

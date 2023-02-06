@@ -20,3 +20,12 @@ mob_mod_supercharged:
             - foreach <context.entity.eye_location.find_entities[living].within[5]> as:target:
                 - strike <[target].location>
                 - burn <[target]> duration:5s if:<[target].on_fire.not>
+
+mob_mod_ignored:
+    type: world
+    debug: false
+    mob_modifier:
+        type: suffix
+    events:
+        on entity targets entity_flagged:mob_modifiers.ignored:
+            - determine cancelled

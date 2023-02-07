@@ -22,7 +22,7 @@ mob_modifiers_get_valid_modifiers_for_build:
         - define modifiers <proc[mob_modifiers_get_all_modifiers]>
         - define valid_modifiers <list>
         - foreach <[modifiers]> as:modifier:
-            - if not <[builds].get[blacklisted_modifiers].contains[<[modifier]>]>:
+            - if not <[build].get[blacklisted_modifiers].contains[<[modifier]>]>:
                 - define valid_modifiers:->:<[modifier]>
 
 mob_modifiers_get_valid_suffixes_and_prefixes_for_build:
@@ -38,10 +38,10 @@ mob_modifiers_get_valid_suffixes_and_prefixes_for_build:
         - define valid_prefixes <list>
         - define valid_suffixes <list>
         - foreach <[prefixes]> as:prefix:
-            - if not <[builds].get[blacklisted_modifiers].contains[<[prefix]>]>:
+            - if not <[build].get[blacklisted_modifiers].contains[<[prefix]>]>:
                 - define valid_prefixes:->:<[prefix]>
         - foreach <[suffixes]> as:suffix:
-            - if not <[builds].get[blacklisted_modifiers].contains[<[suffix]>]>:
+            - if not <[build].get[blacklisted_modifiers].contains[<[suffix]>]>:
                 - define valid_suffixes:->:<[suffix]>
         - determine <list_single[<[valid_prefixes]>].include_single[<[valid_suffixes]>]>
 

@@ -7,9 +7,11 @@ mob_modifiers_spawned_entity:
             - stop if:<util.random_chance[<server.flag[mob_modifiers.chance]>].not>
             # Get a random build from the config based on the entity.
             - define build <script[mob_modifier_config].data_key[builds].get[<context.entity.proc[mob_modifiers_get_random_build]>]>
+            # Get all the valid modifiers for the build.
+            - define valid_modifiers <[build].proc[mob_modifiers_get_valid_suffixes_and_prefixes_for_build]>
             # Get the valid prefixes and suffixes for the build.
-            - define valid_prefixes <[build].proc[mob_modifiers_get_valid_prefixes_for_build]>
-            - define valid_suffixes <[build].proc[mob_modifiers_get_valid_suffixes_for_build]>
+            - define valid_prefixes <[valid_modifiers].first>
+            - define valid_suffixes <[valid_modifiers].last>
             # If the number of valid prefixes or suffixes is less than the number of prefixes or suffixes the build has, stop.
             - if <[valid_prefixes].size> < <[build].get[prefixes]> or <[valid_suffixes].size> < <[build].get[suffixes]>:
                 - stop

@@ -5,9 +5,6 @@ shelled_events:
     debug: false
     events:
         on entity_flagged:shelled takes damage:
-            - if <context.entity.flag[shelled].is_integer.not>:
-                - flag <context.entity> shelled:!
-                - stop
             - flag <context.entity> shelled:--
             - if <context.entity.flag[shelled]> < 1:
                 - flag <context.entity> shelled:!

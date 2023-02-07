@@ -1,4 +1,4 @@
-# Shelled enemies will absorb a number of hits (specifically hits, not damage) and then break.
+# Shelled enemies will absorb a number of hits (specifically hits, not damage) until the shell is broken.
 
 shelled_events:
     type: world

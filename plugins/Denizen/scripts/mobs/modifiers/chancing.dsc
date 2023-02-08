@@ -6,7 +6,7 @@ mob_modifiers_get_valid_builds:
     script:
         - define valid_builds <list>
         - foreach <script[mob_modifier_config].data_key[builds]> as:build:
-            - if <[build].get[matches].advanced_matches[<[entity]>]>:
+            - if <[entity].advanced_matches[<[build].get[matches]>]>:
                 - define valid_builds:->:<[build]>
         - determine <[valid_builds]>
 
@@ -47,12 +47,12 @@ mob_modifiers_get_valid_suffixes_and_prefixes_for_build:
 
 mob_modifiers_get_random_build:
     type: procedure
-    debug: false
+    debug: true
     description: Gets a random build from the build list for an entity.
     definitions: entity[entity to match with]
     script:
         - define builds <[entity].proc[mob_modifiers_get_valid_builds]>
         - define weighted_builds <map>
-        - foreach <[builds]> as:build:
-            - define weighted_builds.<[build].get[name]> <[build].get[weight]>
+        - foreach <[builds]> as:build key:name:
+            - define weighted_builds <[weighted_builds].with[<[name]>].as[1]>
         - determine <[weighted_builds].proc[get_random_item_from_weighted_map]>

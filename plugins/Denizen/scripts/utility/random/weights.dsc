@@ -6,9 +6,10 @@ get_random_item_from_weighted_map:
         - Example: <map[diamond_sword=1;stone=5]>
     definitions: map[map of keys with the values being the weight of the key]
     script:
+        - define integerized_map <map>
         # Ensure all the weights are integers.
         - foreach <[map]> as:weight key:item:
-            - define integerized_map <[map].with[<[item]>].as[<[weight].proc[integerize]>]>
+            - define integerized_map <[integerized_map].with[<[item]>].as[<[weight].proc[integerize]>]>
         # Redefine the map with the integerized weights.
         - define map <[integerized_map]>
         # Get a random number between 0 and the total weight.

@@ -4,7 +4,7 @@ shelled_events:
     type: world
     debug: false
     events:
-        on entity_flagged:shelled takes damage:
+        on entity_flagged:shelled damaged:
             - flag <context.entity> shelled:--
             - if <context.entity.flag[shelled]> < 1:
                 - flag <context.entity> shelled:!

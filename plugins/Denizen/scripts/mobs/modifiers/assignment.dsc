@@ -10,8 +10,8 @@ mob_modifiers_spawned_entity:
             # Get all the valid modifiers for the build.
             - define valid_modifiers <[build].proc[mob_modifiers_get_valid_suffixes_and_prefixes_for_build]>
             # Get the valid prefixes and suffixes for the build.
-            - define valid_prefixes <list.include[<[valid_modifiers].first>]>
-            - define valid_suffixes <list.include[<[valid_modifiers].last>]>
+            - define valid_prefixes <[valid_modifiers].first>
+            - define valid_suffixes <[valid_modifiers].last>
             # If the number of valid prefixes or suffixes is less than the number of prefixes or suffixes the build has, stop.
             - if <[valid_prefixes].size> < <[build].get[prefixes]> or <[valid_suffixes].size> < <[build].get[suffixes]>:
                 - stop

@@ -11,7 +11,7 @@ mob_mod_fishy:
                 - wait 4t
         on entity_flagged:mob_modifiers_other.exploding_fish dies:
             - explode <context.entity.eye_location> power:2.5
- 
+
 mob_modifiers_entity_exploding_fish:
     type: entity
     entity_type: tropical_fish

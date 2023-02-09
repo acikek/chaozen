@@ -18,5 +18,6 @@ mob_modifiers_entity_exploding_fish:
     debug: false
     mechanisms:
         custom_name: <&c>Exploding Fish
+        custom_name_visible: true
     flags:
         mob_modifiers_other.exploding_fish: true

@@ -28,6 +28,9 @@ mob_modifiers_spawned_entity:
             - define formatted_prefixes <[selected_prefixes].parse_tag[<[parse_value].proc[snake_case_to_spaced_title_case]>].space_separated>
             - define formatted_suffixes <[selected_suffixes].parse_tag[<[parse_value].proc[snake_case_to_spaced_title_case]>].space_separated>
             - define entity_name <context.entity.custom_name.if_null[<context.entity.entity_type.proc[snake_case_to_spaced_title_case]>]>
-            - define name "<[color]><[formatted_prefixes]> <&f><[entity_name]> The <[color]><[formatted_suffixes]>"
+            - if <[selected_suffixes].any>:
+                - define name "<[color]><[formatted_prefixes]> <&f><[entity_name]> <[color]>The <[formatted_suffixes]>"
+            - else:
+                - define name "<[color]><[formatted_prefixes]> <&f><[entity_name]>"
             - adjust <context.entity> custom_name:<[name]>
             - adjust <context.entity> custom_name_visible:true

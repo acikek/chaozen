@@ -6,8 +6,8 @@ mob_modifier_config:
 
     builds:
         common:
-            name: Common
-            color: <color[gray]>
+            name: common
+            color: white
             prefixes: 1
             suffixes: 0
             weight: 75
@@ -15,8 +15,8 @@ mob_modifier_config:
             blacklisted_modifiers:
                 - none
         rare:
-            name: Rare
-            color: <color[blue]>
+            name: rare
+            color: blue
             prefixes: 3
             suffixes: 1
             weight: 25
@@ -24,8 +24,8 @@ mob_modifier_config:
             blacklisted_modifiers:
                 - none
         epic:
-            name: Epic
-            color: <color[purple]>
+            name: epic
+            color: light_purple
             prefixes: 6
             suffixes: 2
             weight: 15
@@ -33,8 +33,8 @@ mob_modifier_config:
             blacklisted_modifiers:
                 - none
         legendary:
-            name: Legendary
-            color: <color[orange]>
+            name: legendary
+            color: orange
             prefixes: 9
             suffixes: 3
             weight: 10

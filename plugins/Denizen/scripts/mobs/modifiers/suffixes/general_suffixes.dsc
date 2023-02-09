@@ -8,7 +8,7 @@ mob_mod_exploding:
         type: suffix
     events:
         on entity_flagged:mob_modifiers.exploding dies:
-            - explode <context.entity.eye_location> power:1.3
+            - explode <context.entity.eye_location> power:4.5
 
 mob_mod_supercharged:
     type: world

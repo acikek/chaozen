@@ -13,6 +13,9 @@ mob_modifier_register:
         - define prefix_modifiers <[valid_modifiers].filter_tag[<[filter_value].get[type].equals[prefix]>]>
         - define suffix_modifiers <[valid_modifiers].filter_tag[<[filter_value].get[type].equals[suffix]>]>
 
+        # Clear server flags.
+        - flag server mob_modifiers:!
+
         # Flag the server with the modifiers for easy access.
         - foreach <[prefix_modifiers]> as:prefix_data:
             - flag server mob_modifiers.prefixes.<[prefix_data].get[id]>:<[prefix_data].get[weight]>
@@ -29,7 +32,5 @@ mob_modifier_reload:
     type: world
     debug: false
     events:
-        after server start:
-            - inject mob_modifier_register
-        after reload scripts:
+        after scripts loaded:
             - inject mob_modifier_register

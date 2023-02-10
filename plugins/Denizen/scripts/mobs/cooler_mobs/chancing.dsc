@@ -13,7 +13,7 @@ mob_modifiers_get_valid_builds:
 mob_modifiers_get_all_modifiers:
     type: procedure
     script:
-        - determine <server.flag[mob_modifiers.suffixes].include[<server.flag[mob_modifiers.prefixes]>].alphanumeric>
+        - determine <server.flag[mob_modifiers.suffixes].include[<server.flag[mob_modifiers.prefixes]>]>
 
 mob_modifiers_get_valid_modifiers_for_build:
     type: procedure
@@ -56,3 +56,19 @@ mob_modifiers_get_random_build:
         - foreach <[builds]> as:build:
             - define weighted_builds <[weighted_builds].with[<[build].get[name].to_lowercase>].as[<[build].get[weight]>]>
         - determine <[weighted_builds].proc[get_random_item_from_weighted_map]>
+
+mob_modifiers_get_random_modifier:
+    type: procedure
+    debug: true
+    description: Gets a random modifier from the modifier list.
+    definitions: type[prefix or suffix modifier]|build[build to match with]|already_used_modifiers[list of already used modifiers on the entity]
+    script:
+        - define modifiers <[build].proc[mob_modifiers_get_valid_modifiers_for_build]>
+        - define weighted_modifiers <map>
+        - foreach <[modifiers]> as:modifier:
+            - if <[already_used_modifiers].contains[<[modifier]>]>:
+                - define weight 0
+            - else:
+                - define weight <server.flag[mob_modifiers.modifiers.<[modifier].to_lowercase>.weight]>
+            - define weighted_modifiers <[weighted_modifiers].with[<[modifier]>].as[<[weight]>]> if:<[weight].equals[0].not>
+        - determine <[weighted_modifiers].proc[get_random_item_from_weighted_map]>

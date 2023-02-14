@@ -15,9 +15,13 @@ mob_modifiers_spawned_entity:
             # If the number of valid prefixes or suffixes is less than the number of prefixes or suffixes the build has, stop.
             - if <[valid_prefixes].size> < <[build].get[prefixes]> or <[valid_suffixes].size> < <[build].get[suffixes]>:
                 - stop
-            # Get the selected prefixes and suffixes randomly from the valid ones.
-            - define selected_prefixes <[valid_prefixes].random[<[build].get[prefixes]>]>
-            - define selected_suffixes <[valid_suffixes].random[<[build].get[suffixes]>]>
+            # Get the selected prefixes and suffixes.
+            - define selected_prefixes <list>
+            - define selected_suffixes <list>
+            - repeat <[build].get[prefixes]>:
+                - define selected_prefixes <[selected_prefixes].include[<proc[mob_modifiers_get_random_modifier].context[prefix|<[build].get[name]>|<[selected_prefixes]>]>]>
+            - repeat <[build].get[suffixes]>:
+                - define selected_suffixes <[selected_suffixes].include[<proc[mob_modifiers_get_random_modifier].context[suffix|<[build].get[name]>|<[selected_suffixes]>]>]>
             # Set the flags on the entity for the prefixes and suffixes.
             - foreach <[selected_prefixes]> as:prefix:
                 - flag <context.entity> mob_modifiers.<[prefix]>

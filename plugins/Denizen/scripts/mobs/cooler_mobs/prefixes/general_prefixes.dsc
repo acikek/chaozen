@@ -50,7 +50,7 @@ mob_mod_enhanced:
             - adjust <context.entity> max_health:<context.entity.health_max.mul[1.35]>
             - heal <context.entity>
         on entity damaged by entity_flagged:mob_modifiers.enhanced:
-            - determine <context.damager.mul[1.35]>
+            - determine <context.damage.mul[1.35]>
 
 mob_mod_crushing:
     type: world
@@ -63,3 +63,12 @@ mob_mod_crushing:
             - hurt <context.entity> <context.entity.effects_data.size.div[3]> source:<context.attacker>
             - cast slow <context.entity> amplifier:2 duration:10s
             - cast weakness <context.entity> amplifier:2 duration:10s
+
+mob_mod_porcupining:
+    type: world
+    debug: false
+    mob_modifier:
+        type: prefix
+    events:
+        on entity damaged by entity_flagged:mob_modifiers.porcupining:
+            - determine <context.damage.mul[<context.entity.flag[stats.hit_by_projectile.arrow].if_null[0].mul[0.1].add[1]>]>

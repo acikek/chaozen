@@ -72,3 +72,14 @@ mob_mod_porcupining:
     events:
         on entity damaged by entity_flagged:mob_modifiers.porcupining:
             - determine <context.damage.mul[<context.entity.flag[stats.hit_by_projectile.arrow].if_null[0].mul[0.1].add[1]>]>
+
+mob_mod_breaking:
+    type: world
+    debug: false
+    mob_modifier:
+        type: prefix
+    events:
+        after player damaged by entity_flagged:mob_modifiers.breaking:
+            - if <player.item_in_hand> matches shield or <player.item_in_offhand> matches shield:
+                - itemcooldown <material[shield]> duration:5s
+                - playsound <player.location> sound:entity_item_break volume:1.5 pitch:0.5

@@ -10,8 +10,8 @@ mob_modifiers_spawned_entity:
             # Get all the valid modifiers for the build.
             - define valid_modifiers <[build].proc[mob_modifiers_get_valid_suffixes_and_prefixes_for_build]>
             # Get the valid prefixes and suffixes for the build.
-            - define valid_prefixes <[valid_modifiers].first.keys>
-            - define valid_suffixes <[valid_modifiers].last.keys>
+            - define valid_prefixes <[valid_modifiers].first>
+            - define valid_suffixes <[valid_modifiers].last>
             # If the number of valid prefixes or suffixes is less than the number of prefixes or suffixes the build has, stop.
             - if <[valid_prefixes].size> < <[build].get[prefixes]> or <[valid_suffixes].size> < <[build].get[suffixes]>:
                 - stop
@@ -19,9 +19,9 @@ mob_modifiers_spawned_entity:
             - define selected_prefixes <list>
             - define selected_suffixes <list>
             - repeat <[build].get[prefixes]>:
-                - define selected_prefixes <[selected_prefixes].include[<proc[mob_modifiers_get_random_modifier].context[prefix|<[build].get[name]>|<[selected_prefixes]>]>]>
+                - define selected_prefixes <[selected_prefixes].include[<proc[mob_modifiers_get_random_modifier].context[<list_single[prefix].include_single[<[build].get[name]>].include_single[<[selected_prefixes]>]>]>]>
             - repeat <[build].get[suffixes]>:
-                - define selected_suffixes <[selected_suffixes].include[<proc[mob_modifiers_get_random_modifier].context[suffix|<[build].get[name]>|<[selected_suffixes]>]>]>
+                - define selected_suffixes <[selected_suffixes].include[<proc[mob_modifiers_get_random_modifier].context[<list_single[suffix].include_single[<[build].get[name]>].include_single[<[selected_suffixes]>]>]>]>
             # Set the flags on the entity for the prefixes and suffixes.
             - foreach <[selected_prefixes]> as:prefix:
                 - flag <context.entity> mob_modifiers.<[prefix]>

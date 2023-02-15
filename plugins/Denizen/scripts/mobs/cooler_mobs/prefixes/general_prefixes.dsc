@@ -6,6 +6,7 @@ mob_mod_speedy:
     debug: false
     mob_modifier:
         type: prefix
+        weight: 1
     events:
         after entity_flagged:mob_modifiers.speedy spawns:
             - adjust <context.entity> speed:<context.entity.speed.mul[1.5]>
@@ -15,6 +16,7 @@ mob_mod_shellback:
     debug: false
     mob_modifier:
         type: prefix
+        weight: 1
     events:
         after entity_flagged:mob_modifiers.shellback spawns:
             - run shelled_add def.entity:<context.entity> def.amount:5
@@ -24,9 +26,10 @@ mob_mod_regenerating:
     debug: false
     mob_modifier:
         type: prefix
+        weight: 100
     events:
         after entity_flagged:mob_modifiers.regenerating damaged:
-            - stop if:<context.entity.exists.not>
+            - stop if:<context.entity.is_spawned.not>
             - cast regeneration <context.entity> amplifier:2 duration:<util.random.int[3].to[10]>s
             - playeffect at:<context.entity.eye_location> quantity:50 effect:villager_happy offset:0.5,0.5,0.5
 
@@ -35,6 +38,7 @@ mob_mod_venomous:
     debug: false
     mob_modifier:
         type: prefix
+        weight: 1
     events:
         after entity damaged by entity_flagged:mob_modifiers.venomous:
             - cast <list[poison|wither].random> <context.entity> amplifier:2 duration:5s
@@ -44,6 +48,7 @@ mob_mod_enhanced:
     debug: false
     mob_modifier:
         type: prefix
+        weight: 0.1
     events:
         after entity_flagged:mob_modifiers.enhanced spawns:
             - adjust <context.entity> speed:<context.entity.speed.mul[1.35]>
@@ -57,6 +62,7 @@ mob_mod_crushing:
     debug: false
     mob_modifier:
         type: prefix
+        weight: 0.1
     events:
         after entity damaged by entity_flagged:mob_modifiers.crushing:
             - playsound <context.entity.eye_location> sound:entity_zombie_villager_cure volume:1.5 pitch:0.5
@@ -69,6 +75,7 @@ mob_mod_porcupining:
     debug: false
     mob_modifier:
         type: prefix
+        weight: 0.1
     events:
         on entity damaged by entity_flagged:mob_modifiers.porcupining:
             - determine <context.damage.mul[<context.entity.flag[stats.hit_by_projectile.arrow].if_null[0].mul[0.1].add[1]>]>
@@ -78,6 +85,7 @@ mob_mod_breaking:
     debug: false
     mob_modifier:
         type: prefix
+        weight: 1
     events:
         after player damaged by entity_flagged:mob_modifiers.breaking:
             - if <player.item_in_hand> matches shield or <player.item_in_offhand> matches shield:

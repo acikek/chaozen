@@ -6,9 +6,11 @@ mob_modifiers_spawned_entity:
             # If the random chance for it to have modifiers is not met, stop.
             - stop if:<util.random_chance[<server.flag[mob_modifiers.chance]>].not>
             # Get a random build from the config based on the entity.
-            - define build <script[mob_modifier_config].data_key[builds].get[<context.entity.proc[mob_modifiers_get_random_build]>].if_null[null]>\
+            - define build <script[mob_modifier_config].data_key[builds].get[<context.entity.proc[mob_modifiers_get_random_build]>].if_null[null]>
             # If the build is null, stop.
             - stop if:<[build].equals[null]>
+            # If the build is empty, stop.
+            - stop if:<[build].is_empty>
             # Get all the valid modifiers for the build.
             - define valid_modifiers <[build].proc[mob_modifiers_get_valid_suffixes_and_prefixes_for_build]>
             # Get the valid prefixes and suffixes for the build.

@@ -11,7 +11,7 @@ mob_mod_fishy:
                 - spawn mob_modifiers_entity_exploding_fish <[location]>
                 - wait 4t
         on entity_flagged:mob_modifiers_other.exploding_fish dies:
-            - explode <context.entity.eye_location> power:3.5 fire:<util.random_boolean>
+            - explode <context.entity.eye_location> power:3.5 fire
 
 mob_modifiers_entity_exploding_fish:
     type: entity

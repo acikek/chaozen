@@ -3,10 +3,10 @@ mob_modifiers_spawned_entity:
     debug: false
     events:
         on living spawns:
-            # If the random chance for it to have modifiers is not met, stop.
-            - stop if:<util.random_chance[<server.flag[mob_modifiers.chance]>].not>
             # Stop if the entity doesn't exist.
             - stop if:<context.entity.exists.not>
+            # If the random chance for it to have modifiers is not met, stop.
+            - stop if:<context.entity.proc[mob_modifiers_should_be_modified].not>
             # Stop if there are no valid builds for the entity.
             - stop if:<context.entity.proc[mob_modifiers_get_valid_builds].any.not>
             # Get a random build from the config based on the entity.

@@ -22,11 +22,6 @@ mob_modifier_register:
         - foreach <[suffix_modifiers]> as:suffix_data:
             - flag server mob_modifiers.suffixes.<[suffix_data].get[id]>:<[suffix_data].get[weight]>
 
-        - define config <script[mob_modifier_config]>
-
-        # Flag the server with the global chance for easy access.
-        - flag server mob_modifiers.chance:<[config].data_key[chance]>
-
 # Register modifiers after reload and restart.
 mob_modifier_reload:
     type: world

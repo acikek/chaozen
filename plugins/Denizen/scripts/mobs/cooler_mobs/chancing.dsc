@@ -1,5 +1,18 @@
 # Collection of procedures for Mob Modifiers relating to the build system and getting random builds.
 
+mob_modifiers_should_be_modified:
+    type: procedure
+    debug: false
+    description: Checks if an entity should be modified using the chance tag in the config.
+    definitions: entity[entity to check]
+    script:
+        - define chance 20
+        - if <[entity].location.world.has_storm>:
+            - define chance:*:1.2
+        - if <[entity].location.world.moon_phase> == 8:
+            - define chance:*:2.0
+        - determine <util.random_chance[<[chance]>]>
+
 mob_modifiers_get_valid_builds:
     type: procedure
     debug: false

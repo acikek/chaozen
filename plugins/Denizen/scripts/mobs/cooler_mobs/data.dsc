@@ -1,9 +1,6 @@
 mob_modifier_config:
     type: data
 
-    # The chance of a mob having a modifier (percentage).
-    chance: 20
-
     builds:
         common:
             name: common

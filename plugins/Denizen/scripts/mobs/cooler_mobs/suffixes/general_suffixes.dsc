@@ -42,3 +42,16 @@ mob_mod_butchering:
     events:
         on entity damaged by entity_flagged:mob_modifiers.butchering:
             - determine <context.damage.mul[<context.attacker.eye_location.find.living_entities.within[10].exclude[<context.entity>|<context.attacker>].size.mul[0.1].add[1]>]>
+
+mob_mod_lavaforged:
+    type: world
+    debug: false
+    mob_modifier:
+        type: suffix
+        weight: 1
+    events:
+        after entity damaged by entity_flagged:mob_modifiers.lavaforged:
+            - burn <context.entity> duration:<context.damage.mul[1.35]>
+        on entity_flagged:mob_modifiers.lavaforged damaged:
+            - if <list[DRAGON_BREATH|DRYOUT|FIRE|FIRE_TICK|HOT_FLOOR|LAVA|MELTING]> contains <context.cause>:
+                - determine cancelled

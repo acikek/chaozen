@@ -99,7 +99,18 @@ mob_mod_radiating:
         type: prefix
         weight: 1
     events:
-        after entity_flagged:mob_modifiers.radiating to world:
+        after entity_flagged:mob_modifiers.radiating added to world:
             - while <context.entity.exists>:
                 - cast poison <context.entity.location.find.living_entities[!monster].within[10].exclude[<context.entity>]> duration:5s amplifier:0
                 - wait 2s
+
+mob_mod_tracking:
+    type: world
+    debug: false
+    mob_modifier:
+        type: prefix
+        weight: 1
+    events:
+        after entity_flagged:mob_modifiers.tracking added to world:
+            - while <context.entity.exists>:
+                - attack <context.entity> target:<context.entity.find_players_within[100].first>

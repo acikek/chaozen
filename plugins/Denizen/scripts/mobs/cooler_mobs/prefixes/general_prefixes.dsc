@@ -91,3 +91,15 @@ mob_mod_breaking:
             - if <player.item_in_hand> matches shield or <player.item_in_offhand> matches shield:
                 - itemcooldown <material[shield]> duration:5s
                 - playsound <player.location> sound:entity_item_break volume:1.5 pitch:0.5
+
+mob_mod_radiating:
+    type: world
+    debug: false
+    mob_modifier:
+        type: prefix
+        weight: 1
+    events:
+        after entity_flagged:mob_modifiers.radiating to world:
+            - while <context.entity.exists>:
+                - cast poison <context.entity.location.find.living_entities[!monster].within[10].exclude[<context.entity>]> duration:5s amplifier:0
+                - wait 2s

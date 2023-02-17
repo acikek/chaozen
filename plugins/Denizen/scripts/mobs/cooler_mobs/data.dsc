@@ -1,9 +1,6 @@
 mob_modifier_config:
     type: data
 
-    # The chance of a mob having a modifier (percentage).
-    chance: 20
-
     builds:
         common:
             name: common
@@ -19,7 +16,7 @@ mob_modifier_config:
             color: blue
             prefixes: 3
             suffixes: 1
-            weight: 25
+            weight: 55
             matches: monster
             blacklisted_modifiers:
                 - none
@@ -28,13 +25,13 @@ mob_modifier_config:
             color: light_purple
             prefixes: 6
             suffixes: 2
-            weight: 15
+            weight: 35
             matches: monster
             blacklisted_modifiers:
                 - none
         legendary:
             name: legendary
-            color: orange
+            color: gold
             prefixes: 9
             suffixes: 3
             weight: 10

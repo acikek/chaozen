@@ -10,24 +10,22 @@ mob_modifier_register:
         # There is technically no requirement that the script name starts with "mob_mod_" but it is recommended for organization.
         - define valid_modifiers <util.scripts.filter_tag[<[filter_value].data_key[mob_modifier].exists>].parse_tag[<[parse_value].data_key[mob_modifier].with[id].as[<[parse_value].name.after[mob_mod_]>]>]>
         # Get prefix and suffix modifiers.
-        - define prefix_modifiers <[valid_modifiers].filter_tag[<[filter_value].get[type].equals[prefix]>].parse_tag[<[parse_value].get[id]>]>
-        - define suffix_modifiers <[valid_modifiers].filter_tag[<[filter_value].get[type].equals[suffix]>].parse_tag[<[parse_value].get[id]>]>
+        - define prefix_modifiers <[valid_modifiers].filter_tag[<[filter_value].get[type].equals[prefix]>]>
+        - define suffix_modifiers <[valid_modifiers].filter_tag[<[filter_value].get[type].equals[suffix]>]>
+
+        # Clear server flags.
+        - flag server mob_modifiers:!
 
         # Flag the server with the modifiers for easy access.
-        - flag server mob_modifiers.prefixes:<[prefix_modifiers]>
-        - flag server mob_modifiers.suffixes:<[suffix_modifiers]>
-
-        - define config <script[mob_modifier_config]>
-
-        # Flag the server with the global chance for easy access.
-        - flag server mob_modifiers.chance:<[config].data_key[chance]>
+        - foreach <[prefix_modifiers]> as:prefix_data:
+            - flag server mob_modifiers.prefixes.<[prefix_data].get[id]>:<[prefix_data].get[weight]>
+        - foreach <[suffix_modifiers]> as:suffix_data:
+            - flag server mob_modifiers.suffixes.<[suffix_data].get[id]>:<[suffix_data].get[weight]>
 
 # Register modifiers after reload and restart.
 mob_modifier_reload:
     type: world
     debug: false
     events:
-        after server start:
-            - inject mob_modifier_register
-        after reload scripts:
+        after scripts loaded:
             - inject mob_modifier_register

@@ -3,6 +3,7 @@ mob_mod_fishy:
     debug: false
     mob_modifier:
         type: suffix
+        weight: 0.1
     events:
         on entity_flagged:mob_modifiers.fishy dies:
             - define location <context.entity.eye_location>
@@ -10,7 +11,7 @@ mob_mod_fishy:
                 - spawn mob_modifiers_entity_exploding_fish <[location]>
                 - wait 4t
         on entity_flagged:mob_modifiers_other.exploding_fish dies:
-            - explode <context.entity.eye_location> power:2.5
+            - explode <context.entity.eye_location> power:3.5 fire
 
 mob_modifiers_entity_exploding_fish:
     type: entity

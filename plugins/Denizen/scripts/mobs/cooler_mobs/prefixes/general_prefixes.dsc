@@ -114,3 +114,13 @@ mob_mod_tracking:
         after entity_flagged:mob_modifiers.tracking added to world:
             - while <context.entity.exists>:
                 - attack <context.entity> target:<context.entity.find_players_within[100].first>
+
+mob_mod_vampiric:
+    type: world
+    debug: false
+    mob_modifier:
+        type: prefix
+        weight: 1
+    events:
+        after entity damaged by entity_flagged:mob_modifiers.vampiric:
+            - heal <context.damager> amount:<context.damage.div[2]>

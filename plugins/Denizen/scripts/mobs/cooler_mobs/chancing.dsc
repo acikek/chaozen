@@ -57,7 +57,7 @@ mob_modifiers_get_random_build:
         - define builds <[entity].proc[mob_modifiers_get_valid_builds]>
         - define weighted_builds <map>
         - foreach <[builds]> as:build:
-            - define weighted_builds <[weighted_builds].with[<[build].get[name].to_lowercase>].as[<[build].get[weight]>]>
+            - define weighted_builds <[weighted_builds].with[<[build].get[name]>].as[<[build].get[weight]>]>
         - determine <[weighted_builds].proc[get_random_item_from_weighted_map]>
 
 mob_modifiers_get_random_modifier:

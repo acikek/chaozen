@@ -65,8 +65,8 @@ mob_mod_crushing:
         weight: 0.1
     events:
         after entity damaged by entity_flagged:mob_modifiers.crushing:
-            - playsound <context.entity.eye_location> sound:entity_zombie_villager_cure volume:1.5 pitch:0.5
-            - hurt <context.entity> <context.entity.effects_data.size.div[3]> source:<context.attacker>
+            - playsound <context.entity.eye_location> sound:entity_zombie_villager_cure volume:1.5 pitch:2
+            - hurt <context.entity.effects_data.size.div[3]> <context.entity> source:<context.entity>
             - cast slow <context.entity> amplifier:2 duration:10s
             - cast weakness <context.entity> amplifier:2 duration:10s
 
